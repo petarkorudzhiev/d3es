@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0522A5A4-1FF9-4A5E-BAF2-527D4A8CC204}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>d3es.Sales.Domain</RootNamespace>
+    <AssemblyName>d3es.Sales.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Carts\Cart.cs" />
+    <Compile Include="Carts\Exceptions\CartEmptyException.cs" />
+    <Compile Include="Carts\CartItem.cs" />
+    <Compile Include="Carts\CartMemento.cs" />
+    <Compile Include="Carts\Events\CartCheckedOut.cs" />
+    <Compile Include="Carts\Events\CartCreated.cs" />
+    <Compile Include="Carts\Events\ProductAddedToCart.cs" />
+    <Compile Include="Carts\Events\ProductRemovedFromCart.cs" />
+    <Compile Include="Carts\Events\VoucherAppliedToCart.cs" />
+    <Compile Include="Carts\Exceptions\ProductNotFoundInCartException.cs" />
+    <Compile Include="Customers\Handlers\CartCheckedOutEventHandler.cs" />
+    <Compile Include="Customers\Customer.cs" />
+    <Compile Include="Customers\Handlers\CustomerCreatedEventHandler.cs" />
+    <Compile Include="Customers\CustomerMemento.cs" />
+    <Compile Include="Customers\DeliveryAddress.cs" />
+    <Compile Include="Customers\Email.cs" />
+    <Compile Include="Customers\Events\CustomerCreated.cs" />
+    <Compile Include="Customers\Events\CustomerEmailChanged.cs" />
+    <Compile Include="Customers\Events\CustomerPhoneChanged.cs" />
+    <Compile Include="Customers\Events\CustomerDeliveryAddressChanged.cs" />
+    <Compile Include="Customers\Exceptions\InvalidEmailException.cs" />
+    <Compile Include="Customers\Phone.cs" />
+    <Compile Include="Products\Events\ProductCreated.cs" />
+    <Compile Include="Products\Exceptions\InvalidProductInstanceException.cs" />
+    <Compile Include="Products\Exceptions\InvalidQuantityException.cs" />
+    <Compile Include="Products\Exceptions\InvalidQuantityInstanceException.cs" />
+    <Compile Include="Products\Money.cs" />
+    <Compile Include="Products\Product.cs" />
+    <Compile Include="Products\ProductMemento.cs" />
+    <Compile Include="Products\Quantity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchases\Events\PurchaseCreated.cs" />
+    <Compile Include="Purchases\Purchase.cs" />
+    <Compile Include="Purchases\PurchaseItem.cs" />
+    <Compile Include="Purchases\PurchaseMemento.cs" />
+    <Compile Include="Purchases\PurchaseStatus.cs" />
+    <Compile Include="Vouchers\Events\VoucherCreated.cs" />
+    <Compile Include="Vouchers\Exceptions\InvalidVoucherInstanceException.cs" />
+    <Compile Include="Vouchers\Exceptions\InvalidVoucherException.cs" />
+    <Compile Include="Vouchers\IVoucherCodeGenerator.cs" />
+    <Compile Include="Vouchers\Voucher.cs" />
+    <Compile Include="Vouchers\VoucherCode.cs" />
+    <Compile Include="Vouchers\VoucherMemento.cs" />
+    <Compile Include="Vouchers\VoucherStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\d3es.Framework\d3es.Framework.csproj">
+      <Project>{855d8cad-a368-4f96-b25a-104cd96de193}</Project>
+      <Name>d3es.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Carts\Handlers\" />
+    <Folder Include="Products\Handlers\" />
+    <Folder Include="Purchases\Exceptions\" />
+    <Folder Include="Purchases\Handlers\" />
+    <Folder Include="Vouchers\Handlers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

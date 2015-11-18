@@ -1,0 +1,14 @@
+﻿using d3es.Framework.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace d3es.Framework.EventStore.Snapshots
+{
+    public interface ISnapshotStrategy
+    {
+        bool ShouldMakeSnapShot(AggregateRoot aggregate);
+    }
+}

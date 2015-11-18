@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{855D8CAD-A368-4F96-B25A-104CD96DE193}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>d3es.Framework</RootNamespace>
+    <AssemblyName>d3es.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReflectionMagic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReflectionMagic.2.1.0\lib\net40\ReflectionMagic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bus\IBus.cs" />
+    <Compile Include="Bus\IHandlerRegistrar.cs" />
+    <Compile Include="Bus\InThreadBus.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\ICommandSender.cs" />
+    <Compile Include="Config\BusRegistrar.cs" />
+    <Compile Include="Config\IServiceLocator.cs" />
+    <Compile Include="Domain\AggregateFactory.cs" />
+    <Compile Include="Domain\AggregateRoot.cs" />
+    <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Domain\Exceptions\AggregateAlreadyTrackedException.cs" />
+    <Compile Include="Domain\Exceptions\AggregateNotEventSourcedException.cs" />
+    <Compile Include="Domain\Exceptions\ConcurrencyException.cs" />
+    <Compile Include="Domain\Exceptions\EventStoreConcurrencyException.cs" />
+    <Compile Include="Domain\Exceptions\MissingParameterLessConstructorException.cs" />
+    <Compile Include="Domain\Persistence\IRepository.cs" />
+    <Compile Include="Domain\Persistence\ISession.cs" />
+    <Compile Include="Domain\Persistence\Repository.cs" />
+    <Compile Include="Domain\Persistence\Session.cs" />
+    <Compile Include="Domain\ValueObject.cs" />
+    <Compile Include="EventStore\EventStream.cs" />
+    <Compile Include="EventStore\IamEventSourced.cs" />
+    <Compile Include="EventStore\IEventStore.cs" />
+    <Compile Include="EventStore\InMemoryEventStore.cs" />
+    <Compile Include="EventStore\Snapshots\DefaultSnapshotStrategy.cs" />
+    <Compile Include="EventStore\Snapshots\IMemento.cs" />
+    <Compile Include="EventStore\Snapshots\InMemorySnapshotStore.cs" />
+    <Compile Include="EventStore\Snapshots\IOrginator.cs" />
+    <Compile Include="EventStore\Snapshots\ISnapshotStore.cs" />
+    <Compile Include="EventStore\Snapshots\ISnapshotStrategy.cs" />
+    <Compile Include="EventStore\Snapshots\Snapshot.cs" />
+    <Compile Include="EventStore\Snapshots\SnapshotRepository.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\IEventHandler.cs" />
+    <Compile Include="Events\IEventPublisher.cs" />
+    <Compile Include="Messages\IHandler.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="Projection\DocumentStrategy.cs" />
+    <Compile Include="Projection\ExtendDocumentWriter.cs" />
+    <Compile Include="Projection\IDocumentReader.cs" />
+    <Compile Include="Projection\IDocumentStore.cs" />
+    <Compile Include="Projection\IDocumentStrategy.cs" />
+    <Compile Include="Projection\IDocumentWriter.cs" />
+    <Compile Include="Projection\InMemoryDocumentStore.cs" />
+    <Compile Include="Projection\MemoryDocumentReaderWriter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
